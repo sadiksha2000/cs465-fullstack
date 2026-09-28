@@ -1,0 +1,62 @@
+[
+  {
+    "code": "GALR261114",
+    "name": "Gale Reef",
+    "length": "5 nights",
+    "start": "2026-11-14T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 1899.00",
+    "image": "reef1.jpg",
+    "description": "Drift along the walls of Gale Reef, where fan corals and soft corals fill the water with color. This trip suits new and experienced divers, with guided morning dives and relaxed afternoons on the beach."
+  },
+  {
+    "code": "DAWR261205",
+    "name": "Dawson's Reef",
+    "length": "7 nights",
+    "start": "2026-12-05T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 2299.00",
+    "image": "reef2.jpg",
+    "description": "A full week at Dawson's Reef, known for its schools of tropical fish and clear water. Includes six guided dives, an introduction to underwater photography, and a sunset boat ride."
+  },
+  {
+    "code": "CLAR270116",
+    "name": "Claire's Reef",
+    "length": "4 nights",
+    "start": "2027-01-16T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 1599.00",
+    "image": "reef3.jpg",
+    "description": "A short getaway to Claire's Reef with calm, shallow dives that are ideal for beginners. Snorkeling gear and a certified guide are included with every booking."
+  },
+  {
+    "code": "GALR270213",
+    "name": "Gale Reef",
+    "length": "7 nights",
+    "start": "2027-02-13T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 2349.00",
+    "image": "reef1.jpg",
+    "description": "Our extended Gale Reef trip adds two night dives and a day excursion to the outer reef. Best for divers who want more time in the water and a slower pace on land."
+  },
+  {
+    "code": "DAWR270320",
+    "name": "Dawson's Reef",
+    "length": "5 nights",
+    "start": "2027-03-20T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 1949.00",
+    "image": "reef2.jpg",
+    "description": "Spring departure to Dawson's Reef, timed for the best visibility of the season. Includes four guided dives, all meals at the resort, and airport transfers."
+  },
+  {
+    "code": "CLAR270424",
+    "name": "Claire's Reef",
+    "length": "6 nights",
+    "start": "2027-04-24T00:00:00.000Z",
+    "resort": "Bhaccasyoniztas Beach Resort",
+    "perPerson": "USD 2099.00",
+    "image": "reef3.jpg",
+    "description": "Six nights at Claire's Reef with a mix of reef dives and a kayak tour of the mangroves. A good choice for groups and families who want both adventure and downtime."
+  }
+]
