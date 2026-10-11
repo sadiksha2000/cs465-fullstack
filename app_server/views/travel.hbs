@@ -1,0 +1,24 @@
+<div class="box">
+	<div>
+		<div class="body">
+			<h1>Travel</h1>
+			<ul id="sites">
+				{{#each trips}}
+				<li>
+					<a href="/travel"><img src="/images/{{this.image}}" alt="{{this.name}}"></a>
+					<h2><a href="/travel">{{this.name}}</a></h2>
+					<p>
+						<strong>{{this.length}}</strong> at {{this.resort}} &mdash; starting {{this.start}}
+					</p>
+					<p>
+						{{this.description}}
+					</p>
+					<p>
+						<strong>{{this.perPerson}}</strong> per person (trip code: {{this.code}})
+					</p>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>

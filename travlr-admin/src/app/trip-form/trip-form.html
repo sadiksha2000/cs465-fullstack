@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  @if (errorMessage()) {
+    <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+  }
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <label for="code" class="form-label">Trip code</label>
+      <input id="code" class="form-control" formControlName="code" [readonly]="lockCode()" [class.bg-light]="lockCode()" [class.is-invalid]="isInvalid('code')" />
+      <div class="invalid-feedback">A trip code is required.</div>
+    </div>
+    <div class="col-md-8">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" class="form-control" formControlName="name" [class.is-invalid]="isInvalid('name')" />
+      <div class="invalid-feedback">A name is required.</div>
+    </div>
+    <div class="col-md-4">
+      <label for="length" class="form-label">Length</label>
+      <input id="length" class="form-control" formControlName="length" placeholder="5 nights" [class.is-invalid]="isInvalid('length')" />
+      <div class="invalid-feedback">The trip length is required.</div>
+    </div>
+    <div class="col-md-4">
+      <label for="start" class="form-label">Start date</label>
+      <input id="start" type="date" class="form-control" formControlName="start" [class.is-invalid]="isInvalid('start')" />
+      <div class="invalid-feedback">A start date is required.</div>
+    </div>
+    <div class="col-md-4">
+      <label for="perPerson" class="form-label">Price per person</label>
+      <input id="perPerson" class="form-control" formControlName="perPerson" placeholder="USD 1899.00" [class.is-invalid]="isInvalid('perPerson')" />
+      <div class="invalid-feedback">A price is required.</div>
+    </div>
+    <div class="col-md-6">
+      <label for="resort" class="form-label">Resort</label>
+      <input id="resort" class="form-control" formControlName="resort" [class.is-invalid]="isInvalid('resort')" />
+      <div class="invalid-feedback">A resort name is required.</div>
+    </div>
+    <div class="col-md-6">
+      <label for="image" class="form-label">Image file name</label>
+      <input id="image" class="form-control" formControlName="image" placeholder="reef1.jpg" [class.is-invalid]="isInvalid('image')" />
+      <div class="invalid-feedback">An image file name is required (reef1.jpg, reef2.jpg or reef3.jpg).</div>
+    </div>
+    <div class="col-12">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" rows="5" class="form-control" formControlName="description" [class.is-invalid]="isInvalid('description')"></textarea>
+      <div class="invalid-feedback">A description is required.</div>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex gap-2">
+    <button type="submit" class="btn btn-primary">{{ submitLabel() }}</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="cancel.emit()">Cancel</button>
+  </div>
+</form>

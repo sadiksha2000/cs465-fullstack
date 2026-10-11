@@ -1,0 +1,16 @@
+<h2 class="h3 mb-3">Edit Trip</h2>
+@if (trip()) {
+  <app-trip-form
+    submitLabel="Update Trip"
+    [trip]="trip()"
+    [lockCode]="true"
+    [errorMessage]="errorMessage()"
+    (save)="save($event)"
+    (cancel)="cancel()"
+  ></app-trip-form>
+} @else if (errorMessage()) {
+  <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+  <button type="button" class="btn btn-outline-secondary" (click)="cancel()">Back to trips</button>
+} @else {
+  <p class="text-muted">Loading trip...</p>
+}

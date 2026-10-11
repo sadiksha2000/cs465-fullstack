@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">{{ title }}</a>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Trips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/add-trip" routerLinkActive="active">Add Trip</a>
+      </li>
+    </ul>
+    <a class="btn btn-outline-light btn-sm" href="http://localhost:3000/travel" target="_blank" rel="noopener">View public site</a>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <router-outlet></router-outlet>
+</main>

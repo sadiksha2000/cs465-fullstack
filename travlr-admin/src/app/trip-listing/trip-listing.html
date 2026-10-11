@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h3 mb-0">Trips</h2>
+  <a class="btn btn-success" routerLink="/add-trip">Add Trip</a>
+</div>
+
+@if (errorMessage()) {
+  <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+}
+
+@if (loading()) {
+  <p class="text-muted">Loading trips...</p>
+} @else if (trips().length === 0 && !errorMessage()) {
+  <p class="text-muted">There are no trips yet. Use Add Trip to create one.</p>
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+  @for (trip of trips(); track trip.code) {
+    <div class="col">
+      <app-trip-card [trip]="trip" (edit)="editTrip($event)" (remove)="deleteTrip($event)"></app-trip-card>
+    </div>
+  }
+</div>
