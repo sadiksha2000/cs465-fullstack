@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2 class="h3 mb-0">Trips</h2>
-  <a class="btn btn-success" routerLink="/add-trip">Add Trip</a>
+  @if (auth.isLoggedIn()) {
+    <a class="btn btn-success" routerLink="/add-trip">Add Trip</a>
+  } @else {
+    <a class="btn btn-outline-secondary" routerLink="/login">Log in to manage trips</a>
+  }
 </div>
 
 @if (errorMessage()) {
@@ -16,7 +20,7 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
   @for (trip of trips(); track trip.code) {
     <div class="col">
-      <app-trip-card [trip]="trip" (edit)="editTrip($event)" (remove)="deleteTrip($event)"></app-trip-card>
+      <app-trip-card [trip]="trip" [canEdit]="auth.isLoggedIn()" (edit)="editTrip($event)" (remove)="deleteTrip($event)"></app-trip-card>
     </div>
   }
 </div>

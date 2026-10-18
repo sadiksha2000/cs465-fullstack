@@ -13,6 +13,7 @@ import { IMAGE_BASE_URL } from '../services/trip-data.service';
 })
 export class TripCard {
   trip = input.required<Trip>();
+  canEdit = input(false); // Edit and Delete are shown only to a logged-in administrator
   edit = output<Trip>();
   remove = output<Trip>();
 

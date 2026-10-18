@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data.service';
 import { TripCard } from '../trip-card/trip-card';
+import { AuthenticationService } from '../services/authentication.service';
 
 // Shows every trip as a card. Loads the data from the API through the service.
 @Component({
@@ -14,6 +15,7 @@ import { TripCard } from '../trip-card/trip-card';
 export class TripListing implements OnInit {
   private tripService = inject(TripDataService);
   private router = inject(Router);
+  protected auth = inject(AuthenticationService);
 
   trips = signal<Trip[]>([]);
   loading = signal(true);

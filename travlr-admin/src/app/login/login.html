@@ -1,0 +1,26 @@
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <h2 class="h3 mb-3">Administrator Login</h2>
+    <p class="text-muted">Log in to add, edit or delete trips.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      @if (errorMessage()) {
+        <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+      }
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" type="email" class="form-control" formControlName="email" autocomplete="username" [class.is-invalid]="isInvalid('email')" />
+        <div class="invalid-feedback">Enter a valid email address.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" type="password" class="form-control" formControlName="password" autocomplete="current-password" [class.is-invalid]="isInvalid('password')" />
+        <div class="invalid-feedback">A password is required.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="busy()">Log in</button>
+    </form>
+  </div>
+</div>

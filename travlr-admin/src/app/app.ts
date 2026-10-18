@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = 'Travlr Getaways Admin';
+  protected auth = inject(AuthenticationService);
+  private router = inject(Router);
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigate(['/']);
+  }
 }

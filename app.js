@@ -9,6 +9,7 @@ const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
 const { connect } = require('./app_api/models/db');
+const passport = require('./app_api/config/passport');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -46,6 +47,7 @@ app.use('/api', (req, res, next) => {
   next();
 });
 
+app.use(passport.initialize());
 const apiRouter = require('./app_api/routes/index');
 app.use('/api', apiRouter);
 

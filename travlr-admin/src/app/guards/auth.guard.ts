@@ -1,0 +1,10 @@
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
+
+// Blocks the add and edit pages for anyone who is not logged in.
+export const authGuard: CanActivateFn = () => {
+  const auth = inject(AuthenticationService);
+  const router = inject(Router);
+  return auth.isLoggedIn() ? true : router.createUrlTree(['/login']);
+};

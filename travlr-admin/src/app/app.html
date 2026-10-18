@@ -5,11 +5,21 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Trips</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/add-trip" routerLinkActive="active">Add Trip</a>
-      </li>
+      @if (auth.isLoggedIn()) {
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-trip" routerLinkActive="active">Add Trip</a>
+        </li>
+      }
     </ul>
-    <a class="btn btn-outline-light btn-sm" href="http://localhost:3000/travel" target="_blank" rel="noopener">View public site</a>
+    <div class="d-flex align-items-center gap-2">
+      <a class="btn btn-outline-light btn-sm" href="http://localhost:3000/travel" target="_blank" rel="noopener">View public site</a>
+      @if (auth.isLoggedIn()) {
+        <span class="navbar-text small">Signed in as {{ auth.userName() }}</span>
+        <button type="button" class="btn btn-light btn-sm" (click)="logout()">Log out</button>
+      } @else {
+        <a class="btn btn-light btn-sm" routerLink="/login">Log in</a>
+      }
+    </div>
   </div>
 </nav>
 

@@ -10,8 +10,17 @@ describe('TripCard', () => {
     await TestBed.configureTestingModule({ imports: [TripCard] }).compileComponents();
     fixture = TestBed.createComponent(TripCard);
     fixture.componentRef.setInput('trip', MOCK_TRIPS[0]);
+    fixture.componentRef.setInput('canEdit', true);
     await fixture.whenStable();
     el = fixture.nativeElement as HTMLElement;
+  });
+
+  it('hides Edit and Delete when nobody is logged in', async () => {
+    fixture.componentRef.setInput('canEdit', false);
+    await fixture.whenStable();
+    expect(el.querySelector('.btn-primary')).toBeNull();
+    expect(el.querySelector('.btn-outline-danger')).toBeNull();
+    expect(el.textContent).toContain('Gale Reef'); // the trip itself is still public
   });
 
   it('shows the trip details', () => {

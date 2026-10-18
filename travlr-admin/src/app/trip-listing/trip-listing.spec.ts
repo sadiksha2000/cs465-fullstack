@@ -1,11 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { TOKEN_KEY } from '../services/authentication.service';
+import { makeToken } from '../../testing/mock-token';
 import { TripListing } from './trip-listing';
 import { TripDataService } from '../services/trip-data.service';
 import { MOCK_TRIPS } from '../../testing/mock-trips';
 
 describe('TripListing', () => {
+  beforeEach(() => localStorage.clear());
+  afterEach(() => localStorage.clear());
+
   let fixture: ComponentFixture<TripListing>;
   let service: { getTrips: ReturnType<typeof vi.fn>; deleteTrip: ReturnType<typeof vi.fn> };
 
@@ -13,7 +20,7 @@ describe('TripListing', () => {
     service = { getTrips: vi.fn().mockReturnValue(getTrips), deleteTrip: vi.fn().mockReturnValue(of(undefined)) };
     await TestBed.configureTestingModule({
       imports: [TripListing],
-      providers: [provideRouter([]), { provide: TripDataService, useValue: service }]
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting(), { provide: TripDataService, useValue: service }]
     }).compileComponents();
     fixture = TestBed.createComponent(TripListing);
     await fixture.whenStable();
@@ -53,5 +60,22 @@ describe('TripListing', () => {
     vi.spyOn(window, 'confirm').mockReturnValue(false);
     fixture.componentInstance.deleteTrip(MOCK_TRIPS[0]);
     expect(service.deleteTrip).not.toHaveBeenCalled();
+  });
+
+  it('shows Edit, Delete and Add Trip when logged in', async () => {
+    localStorage.setItem(TOKEN_KEY, makeToken(3600));
+    await create(of(MOCK_TRIPS));
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelectorAll('.btn-outline-danger').length).toBe(2);
+    expect(el.textContent).toContain('Add Trip');
+  });
+
+  it('hides Edit, Delete and Add Trip when logged out, but still lists the trips', async () => {
+    await create(of(MOCK_TRIPS));
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelectorAll('app-trip-card').length).toBe(2);
+    expect(el.querySelectorAll('.btn-outline-danger').length).toBe(0);
+    expect(el.textContent).not.toContain('Add Trip');
+    expect(el.textContent).toContain('Log in to manage trips');
   });
 });

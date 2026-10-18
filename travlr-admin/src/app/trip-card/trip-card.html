@@ -10,9 +10,11 @@
       <li><strong>Price:</strong> {{ trip().perPerson }} per person</li>
     </ul>
     <p class="card-text small trip-description">{{ trip().description }}</p>
+    @if (canEdit()) {
     <div class="mt-auto d-flex gap-2">
       <button type="button" class="btn btn-primary btn-sm" (click)="edit.emit(trip())">Edit</button>
       <button type="button" class="btn btn-outline-danger btn-sm" (click)="remove.emit(trip())">Delete</button>
     </div>
+    }
   </div>
 </div>
